@@ -1,0 +1,82 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+(progn ;;init forms
+  (ros:ensure-asdf)
+  #+quicklisp(ql:quickload '(:crayon) :silent t))
+
+
+(defpackage :ros.script.demo.3859428344
+  (:use :cl))
+(in-package :ros.script.demo.3859428344)
+
+(defun demo () (
+                princ (crayon:crayon
+                        (format nil "~%")
+                        (format nil "~%")
+                        (format nil "~%")
+                        (format nil "~%")
+                        (format nil "          ")
+                        (fg:8-bit 245
+                                  (fx:bold "bold")
+                                  (format nil "  ")
+                                  (fx:faint "faint")
+                                  (format nil "  ")
+                                  (fx:italic "italic")
+                                  (format nil "  ")
+                                  (fx:underlined "underlined")
+                                  (format nil "  ")
+                                  (fx:inverted "inverted")
+                                  (format nil "  ")
+                                  (fx:crossed-out "crossed out"))
+                        (format nil "~%")
+                        (format nil "~%")
+                        (format nil "          ")
+                        (crayon:crayon
+                                (fg:black "black")
+                                (format nil "  ")
+                                (fg:red "red")
+                                (format nil "  ")
+                                (fg:green "green")
+                                (format nil "  ")
+                                (fg:yellow "yellow")
+                                (format nil "  ")
+                                (fg:blue "blue")
+                                (format nil "  ")
+                                (fg:magenta "magenta")
+                                (format nil "  ")
+                                (fg:cyan "cyan")
+                                (format nil "  ")
+                                (fg:white "white"))
+                        (format nil "~%")
+                        (format nil "~%")
+                        (format nil "          ")
+                        (crayon:crayon
+                                (bg:black "black")
+                                (format nil "  ")
+                                (bg:red "red")
+                                (format nil "  ")
+                                (bg:green "green")
+                                (format nil "  ")
+                                (bg:yellow "yellow")
+                                (format nil "  ")
+                                (bg:blue "blue")
+                                (format nil "  ")
+                                (bg:magenta "magenta")
+                                (format nil "  ")
+                                (bg:cyan "cyan")
+                                (format nil "  ")
+                                (bg:white "white"))
+                        (format nil "~%")
+                        (format nil "~%")
+                        (format nil "~%")
+                        (format nil "~%")
+                        (format nil "~%"))))
+
+
+(defun main (&rest argv)
+  (declare (ignorable argv))
+  (demo))
+;;; vim: set ft=lisp lisp:
