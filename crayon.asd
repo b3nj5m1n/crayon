@@ -6,5 +6,24 @@
   :license  "MIT"
   :version "0.0.1"
   :serial t
-  :components ((:file "package")
-               (:file "crayon")))
+  :components
+  ((:module "base"
+            :pathname ""
+            :components
+            ((:file "package")
+             (:file "crayon")))
+   (:module "fg"
+           :pathname ""
+           :components
+           ((:file "package_fg")
+            (:file "fg")))
+   (:module "bg"
+           :pathname ""
+           :components
+           ((:file "package_bg")
+            (:file "bg")))
+   (:module "fx"
+           :pathname ""
+           :components
+           ((:file "package_fx")
+            (:file "fx")))))
