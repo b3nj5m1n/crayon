@@ -1,6 +1,6 @@
 ;;;; package.lisp
 
-(defpackage #:chalk
+(defpackage #:crayon
   (:use #:cl)
   (:export bold
            faint

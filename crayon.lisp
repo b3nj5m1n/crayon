@@ -1,6 +1,6 @@
-;;;; chalk.lisp
+;;;; crayon.lisp
 
-(in-package #:chalk)
+(in-package #:crayon)
 
 (defun escape-ansi (n &rest args)
   "Creates an ansi escape sequence
