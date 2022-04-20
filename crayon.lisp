@@ -22,6 +22,6 @@
       (format nil "~c[~d;~am" #\ESC n (reduce (lambda (x y) (format nil "~d;~d" x y)) args))
       (format nil "~c[~dm" #\ESC n)))
 
-
-;;; Setting
-
+(defun crayon (string &rest strings)
+  (let ((args (concatenate 'list (list string) strings)))
+    (reduce (lambda (s1 s2) (concatenate 'string s1 s2)) args)))

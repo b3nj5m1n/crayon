@@ -2,4 +2,5 @@
 
 (defpackage #:crayon
   (:use #:cl)
-  (:export escape-ansi))
+  (:export escape-ansi
+           crayon))
