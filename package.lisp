@@ -3,4 +3,5 @@
 (defpackage #:crayon
   (:use #:cl)
   (:export escape-ansi
-           crayon))
+           crayon
+           hex-to-rgb))

@@ -25,3 +25,13 @@
 (defun crayon (string &rest strings)
   (let ((args (concatenate 'list (list string) strings)))
     (reduce (lambda (s1 s2) (concatenate 'string s1 s2)) args)))
+
+(defmethod hex-to-rgb ((hex string))
+  "Convert hexadecimal color string to list of rgb values
+  "
+  (if (string-equal "#" (subseq hex 0 1))
+      (setf hex (subseq hex 1 (length hex))))
+  (case (length hex)
+    (3 (mapcar (lambda (e) (* 17 (parse-integer (subseq hex (* e 1) (+ 1 (* e 1))) :radix 16))) '(0 1 2)))
+    (6 (mapcar (lambda (e) (parse-integer (subseq hex (* e 2) (+ 2 (* e 2))) :radix 16)) '(0 1 2)))
+    (8 (mapcar (lambda (e) (parse-integer (subseq hex (* e 2) (+ 2 (* e 2))) :radix 16)) '(0 1 2)))))

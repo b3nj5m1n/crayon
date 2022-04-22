@@ -1,8 +1,16 @@
 (in-package #:fg)
 
-(defun rgb (r g b string &rest strings)
+(defmethod rgb ((rgb list) string &rest strings)
   (let ((args (concatenate 'list (list string) strings)))
-    (reduce (lambda (s1 s2) (concatenate 'string s1 (escape-reset-fg) (escape-set-fg-rgb r g b) s2 (escape-reset-fg))) args :initial-value (escape-set-fg-rgb r g b))))
+    (destructuring-bind (r g b) rgb
+      (rgb-p r g b args))))
+(defmethod rgb ((rgb string) string &rest strings)
+  (let ((args (concatenate 'list (list string) strings)))
+    (destructuring-bind (r g b) (crayon:hex-to-rgb rgb)
+      (rgb-p r g b args))))
+
+(defun rgb-p (r g b args)
+  (reduce (lambda (s1 s2) (concatenate 'string s1 (escape-reset-bg) (escape-set-bg-rgb r g b) s2 (escape-reset-bg))) args :initial-value (escape-set-bg-rgb r g b)))
 
 (defun 8-bit (i string &rest strings)
   (let ((args (concatenate 'list (list string) strings)))
