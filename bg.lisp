@@ -1,5 +1,13 @@
 (in-package #:bg)
 
+(defun gradient (gradient-args string)
+  (let* ((len (1- (length string)))
+         (args (concatenate 'list (list len) gradient-args))
+         (result ""))
+    (loop for color in (apply #'crayon:gradient-steps args) and idx from 0 do
+          (setq result (concatenate 'string result (rgb color (subseq string idx (1+ idx))))))
+    result))
+
 (defmethod rgb ((rgb list) string &rest strings)
   (let ((args (concatenate 'list (list string) strings)))
     (destructuring-bind (r g b) rgb

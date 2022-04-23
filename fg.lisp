@@ -1,5 +1,13 @@
 (in-package #:fg)
 
+(defun gradient (gradient-args string)
+  (let* ((len (1- (length string)))
+         (args (concatenate 'list (list len) gradient-args))
+         (result ""))
+    (loop for color in (apply #'crayon:gradient-steps args) and idx from 0 do
+          (setq result (concatenate 'string result (rgb color (subseq string idx (1+ idx))))))
+    result))
+
 (defmethod rgb ((rgb list) string &rest strings)
   (let ((args (concatenate 'list (list string) strings)))
     (destructuring-bind (r g b) rgb
@@ -10,7 +18,7 @@
       (rgb-p r g b args))))
 
 (defun rgb-p (r g b args)
-  (reduce (lambda (s1 s2) (concatenate 'string s1 (escape-reset-bg) (escape-set-bg-rgb r g b) s2 (escape-reset-bg))) args :initial-value (escape-set-bg-rgb r g b)))
+  (reduce (lambda (s1 s2) (concatenate 'string s1 (escape-reset-fg) (escape-set-fg-rgb r g b) s2 (escape-reset-fg))) args :initial-value (escape-set-fg-rgb r g b)))
 
 (defun 8-bit (i string &rest strings)
   (let ((args (concatenate 'list (list string) strings)))

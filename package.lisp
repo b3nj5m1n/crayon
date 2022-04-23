@@ -5,4 +5,4 @@
   (:export escape-ansi
            crayon
            hex-to-rgb
-           gradient))
+           gradient-steps))

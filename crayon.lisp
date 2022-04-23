@@ -73,27 +73,27 @@
 
 ; (third (second '(0.5 (251 113 133))))
 
-(defmethod gradient ((steps integer) (c1 list) (c2 list) &rest r)
+(defmethod gradient-steps ((steps integer) (c1 list) (c2 list) &rest r)
   "Gradient variant for even distribution with rgb values
   "
   (let* ((colors (concatenate 'list (list c1 c2) r))
          (step (float (/ 1 (1- (length colors)))))
          (args (loop for color in colors and idx from 0 collect (list (* idx step) color))))
     (gradient-interpolate steps args)))
-(defmethod gradient ((steps integer) (c1 string) (c2 string) &rest r)
+(defmethod gradient-steps ((steps integer) (c1 string) (c2 string) &rest r)
   "Gradient variant for even distribution with hex values
   "
   (let* ((colors (mapcar 'hex-to-rgb (concatenate 'list (list c1 c2) r)))
          (step (float (/ 1 (1- (length colors)))))
          (args (loop for color in colors and idx from 0 collect (list (* idx step) color))))
     (gradient-interpolate steps args)))
-(defmethod gradient ((steps integer) (s1 float) (c1 list) &rest r)
+(defmethod gradient-steps ((steps integer) (s1 float) (c1 list) &rest r)
   "Gradient variant for defined distribution with rgb values
   "
   (let* ((args (concatenate 'list (list s1 c1) r))
          (args (loop for (idx color) on args by #'cddr collect (list idx color))))
     (gradient-interpolate steps args)))
-(defmethod gradient ((steps integer) (s1 float) (c1 string) &rest r)
+(defmethod gradient-steps ((steps integer) (s1 float) (c1 string) &rest r)
   "Gradient variant for defined distribution with hex values
   "
   (let* ((args (concatenate 'list (list s1 c1) r))

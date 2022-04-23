@@ -17,4 +17,5 @@
            bright-cyan
            bright-white
            8-bit
-           rgb))
+           rgb
+           gradient))
