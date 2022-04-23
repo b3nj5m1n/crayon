@@ -4,4 +4,5 @@
   (:use #:cl)
   (:export escape-ansi
            crayon
-           hex-to-rgb))
+           hex-to-rgb
+           gradient))
