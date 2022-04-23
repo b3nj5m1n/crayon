@@ -5,6 +5,6 @@ Terminal styling in common lisp
 <br>
 
 <p align="center"> 
-    <img src="https://i.imgur.com/jC2uoHO.png"/>       
+    <img src="https://i.imgur.com/4b0uVrG.png"/>       
 </p>
 
