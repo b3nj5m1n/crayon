@@ -38,7 +38,7 @@
 
 
 (defun gradient-interpolate (steps args)
-    (let ((l '(1 2 3))
+    (let ((l args)
           (result (list)))
         (loop for i from 1 to (1- (length l)) do
               (let* ((color1 (nth (1- i) args))
@@ -101,11 +101,11 @@
     (gradient-interpolate steps args)))
 
 ; ; Variant 1
-; (gradient 20 '(56 189 248) '(251 113 133) '(163 230 53))
+; (gradient-steps 20 '(56 189 248) '(251 113 133) '(163 230 53))
 ; ; Variant 2
-; (gradient 20 "38BDF8" "FB7185" "A3E635")
+; (gradient-steps 20 "38BDF8" "FB7185" "A3E635")
 ; ; Variant 3
-; (gradient 20 0.0 '(56 189 248) 0.5 '(251 113 133) 0.5 '(163 230 53))
+; (gradient-steps 20 0.0 '(56 189 248) 0.5 '(251 113 133) 0.5 '(163 230 53))
 ; ; Variant 4
-; (gradient 20 0.0 "38BDF8" 0.5 "FB7185" 0.5 "A3E635")
+; (gradient-steps 20 0.0 "38BDF8" 0.5 "FB7185" 0.5 "A3E635")
 
